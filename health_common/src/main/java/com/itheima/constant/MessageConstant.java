@@ -1,12 +1,7 @@
-package com.itheima;
+package com.itheima.constant;
 
 /**
- * 作    者: 陆奉学
- * 工 程 名: health_parent
- * 包    名: com.itheima
- * 日    期: 2020-11-2020/11/21
- * 时    间: 19:17
- * 描    述:  常量类
+ * 消息常量
  */
 public interface MessageConstant {
     static final String DELETE_CHECKITEM_FAIL = "删除检查项失败";

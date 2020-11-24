@@ -17,7 +17,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class QueryPageBean implements Serializable {
     //页码
-    private Integer curentPage;
+    private Integer currentPage;
     //每页记录数
     private Integer pageSize;
     //查询条件

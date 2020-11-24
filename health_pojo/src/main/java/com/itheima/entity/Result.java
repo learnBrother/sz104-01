@@ -16,7 +16,7 @@ import java.io.Serializable;
  */
 @Data
 @AllArgsConstructor
-
+@NoArgsConstructor
 public class Result implements Serializable {
     //旗帜 变量
     private Boolean flag;
@@ -31,3 +31,49 @@ public class Result implements Serializable {
         this.message = message;
     }
 }
+/*
+public class Result implements Serializable{
+    //旗帜 变量
+    private Boolean flag;
+    //返回结果集
+    private String message;
+    //返回数据
+    private Object data;
+
+    //保存已有的信息
+    public Result(Boolean flag, String message) {
+        super();
+        this.flag = flag;
+        this.message = message;
+    }
+
+    public Boolean getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Boolean flag) {
+        this.flag = flag;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+    public Result(Boolean flag, String message, Object data) {
+        this.flag = flag;
+        this.message = message;
+        this.data = data;
+    }
+}
+*/
