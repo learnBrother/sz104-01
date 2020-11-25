@@ -1,11 +1,8 @@
 package com.itheima.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-
-
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.itheima.constant.MessageConstant;
 import com.itheima.dao.CheckItemDao;
 import com.itheima.entity.PageResult;
 import com.itheima.entity.QueryPageBean;
@@ -31,17 +28,38 @@ public class CheckItemServiceImpl implements CheckItemService {
     //注入dao
     @Autowired
     private CheckItemDao checkitemDao;
-    //查询所有检查项
+   /**
+   *
+   * @Description:  //查询所有检查项
+   * @Param: []
+   * @return: java.util.List<com.itheima.pojo.CheckItem>
+   * @Author: 陆奉学
+   * @Date: 2020/11/24
+   */
     @Override
     public List<CheckItem> findAll() {
         return checkitemDao.findAll();
     }
-    //添加检查项
+   /**
+   *
+   * @Description:  //添加检查项
+   * @Param: [checkItem]
+   * @return: void
+   * @Author: 陆奉学
+   * @Date: 2020/11/24
+   */
     @Override
     public void add(CheckItem checkItem) {
         checkitemDao.add(checkItem);
     }
-    //检查项分页查询
+    /**
+    *
+    * @Description: //检查项分页查询
+    * @Param: [queryPageBean]
+    * @return: com.itheima.entity.PageResult<com.itheima.pojo.CheckItem>
+    * @Author: 陆奉学
+    * @Date: 2020/11/24
+    */
     @Override
     public PageResult<CheckItem> findPage(QueryPageBean queryPageBean) {
         //用工具类获取当前页，页条数
@@ -58,7 +76,14 @@ public class CheckItemServiceImpl implements CheckItemService {
        PageResult<CheckItem> pageResult= new  PageResult<>(page.getTotal(),page.getResult());
         return pageResult;
     }
-    //根据id删除检查项
+    /**
+    *
+    * @Description: //根据id删除检查项
+    * @Param: [id]
+    * @return: void
+    * @Author: 陆奉学
+    * @Date: 2020/11/24
+    */
     @Override
     public void deleteById(int id) throws HealthExcption {
         //先判断这个检查项是否被检查组使用
@@ -71,12 +96,26 @@ public class CheckItemServiceImpl implements CheckItemService {
         //没使用就可以调用dao删除
         checkitemDao.deleteById(id);
     }
-
+    /***
+    *
+    * @Description: //通过id查询检查项在将CheckItem返回给列表
+    * @Param: [id]
+    * @return: com.itheima.pojo.CheckItem
+    * @Author: 陆奉学
+    * @Date: 2020/11/24
+    */
     @Override
     public CheckItem findById(int id) {
         return checkitemDao.findById(id);
     }
-
+    /**
+    *
+    * @Description: 更新列表
+    * @Param: [checkItem]
+    * @return: void
+    * @Author: 陆奉学
+    * @Date: 2020/11/24
+    */
     @Override
     public void update(CheckItem checkItem) {
         checkitemDao.update(checkItem);

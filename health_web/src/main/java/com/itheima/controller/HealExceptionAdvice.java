@@ -1,7 +1,6 @@
 package com.itheima.controller;
 
 import com.itheima.entity.Result;
-import com.itheima.exception.HealthExcption;
 import com.itheima.exception.MyException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,7 +23,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @Slf4j
 public class HealExceptionAdvice {
-
+    /**
+    *
+    * @Description: 自定义异常
+    * @Param: [e]
+    * @return: com.itheima.entity.Result
+    * @Author: 陆奉学
+    * @Date: 2020/11/24
+    */
     public Result handleHealthException(MyException e){
         //我们自己抛出的异常，把异常信息包装下返回即可
         return new Result(false,e.getMessage());
@@ -34,8 +40,8 @@ public class HealExceptionAdvice {
     public Result handleException(Exception e){
         //e.printStackTrace();
         //System.out.println();
-        log.error("发知未知异常",e);
-        return new Result(false, "发知未知异常，请稍后重试");
+        log.error("发生未知异常",e);
+        return new Result(false, "发生未知异常，请稍后重试");
     }
 
 }

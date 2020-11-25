@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.CheckGroupDao">
+    <!--添加检查组-->
+    <insert id="add" parameterType="CheckGroup">
+    <selectKey resultType="int" order="AFTER" keyProperty="id">
+        select last_insert_id()
+    </selectKey>
+        insert into t_checkgroup (code,name,helpCode,sex,remark,attention)
+        values (#{code},#{name},#{helpCode},#{sex},#{remark},#{attention})
+    </insert>
+
+    <!--添加检查组与检查项的关系-->
+    <insert id="addCheckGroupCheckItem" parameterType="int">
+        insert into t_checkgroup-checkitem(checkgroup_id,checkitem_id)
+         values (#{checkGroupId}, #{checkitemId})
+    </insert>
+
+    <!--检查组分页查询-->
+    <!--对value变量值进行判断，不是null的并且length大于0
+                条件where编码like传入的编码，or 项目名like 出入的项目名-->
+    <select id="findByCondition" parameterType="String" resultType="CheckGroup">
+        select * from t_checkgroup
+        <if test="value !=null and value.length >0">
+          where code like #{value} or name like #{value} or helpCode like #{value}
+        </if>
+    </select>
+</mapper>

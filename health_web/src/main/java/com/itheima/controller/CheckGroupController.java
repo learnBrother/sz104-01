@@ -2,6 +2,8 @@ package com.itheima.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.itheima.constant.MessageConstant;
+import com.itheima.entity.PageResult;
+import com.itheima.entity.QueryPageBean;
 import com.itheima.entity.Result;
 import com.itheima.pojo.CheckGroup;
 import com.itheima.service.CheckGroupService;
@@ -25,7 +27,7 @@ public class CheckGroupController {
     private CheckGroupService checkGroupService;
    /**
    *
-   * @Description:
+   * @Description:新增检查组
    * @Param: [checkGroup, checkitemIds]
    * @return: com.itheima.entity.Result
    * @Author: 陆奉学
@@ -38,4 +40,19 @@ public class CheckGroupController {
         //相应结果
         return new Result(true, MessageConstant.ADD_CHECKGROUP_SUCCESS);
     }
+    /**
+    *
+    * @Description: 检查组分页查询
+    * @Param: [queryPageBean]
+    * @return: com.itheima.entity.Result
+    * @Author: 陆奉学
+    * @Date: 2020/11/25
+    */@PostMapping("/finPage")
+    public Result findPage(@RequestBody QueryPageBean queryPageBean){
+        //调用服务分页查询把查询条件包装到查询封装类的分页列表结果集
+       PageResult<CheckGroup> pageResult = checkGroupService.findPage(queryPageBean);
+       //返回封装结果包含(分页列表结果集)
+       return new Result(true,MessageConstant.QUERY_CHECKGROUP_SUCCESS,pageResult);
+    }
+
 }

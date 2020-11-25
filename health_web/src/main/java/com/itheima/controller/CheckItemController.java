@@ -24,9 +24,14 @@ import java.util.List;
 public class CheckItemController {
     @Reference
     private CheckItemService checkItemService;
-    /*
-    * 查询所有的方法
-    * */
+   /**
+   *
+   * @Description: 查询所有的方法
+   * @Param: []
+   * @return: com.itheima.entity.Result
+   * @Author: 陆奉学
+   * @Date: 2020/11/24
+   */
     @GetMapping("/findAll")
     public Result findAll(){
         //调用服务查询所有的检查
@@ -34,9 +39,14 @@ public class CheckItemController {
        return new Result(true, MessageConstant.QUERY_CHECKITEM_SUCCESS,list);
 
     }
-    /*
-    * 新增检查项
-    * */
+   /**
+   *
+   * @Description: 新增检查项
+   * @Param: [checkItem]
+   * @return: com.itheima.entity.Result
+   * @Author: 陆奉学
+   * @Date: 2020/11/24
+   */
     @PostMapping("/add")
     public Result add(@RequestBody CheckItem checkItem ){
         //调用服务添加
@@ -44,9 +54,14 @@ public class CheckItemController {
 //        返回结果
         return new Result(true,MessageConstant.ADD_CHECKGROUP_SUCCESS);
     }
-    /*
-    * 检查项分页
-    * */
+    /**
+    *
+    * @Description: 检查项分页
+    * @Param: [queryPageBean]
+    * @return: com.itheima.entity.Result
+    * @Author: 陆奉学
+    * @Date: 2020/11/24
+    */
     @PostMapping("/findPage")
     public Result findPage(@RequestBody QueryPageBean queryPageBean){
         //调用业务层来分页，获取分页结果
@@ -68,23 +83,22 @@ public class CheckItemController {
        return new Result(true,MessageConstant.DELETE_CHECKITEM_SUCCESS);
     }
 
-    //编辑检查项
+    /**
+    *
+    * @Description: 编辑检查项
+    * @Param: [id]
+    * @return: com.itheima.entity.Result
+    * @Author: 陆奉学
+    * @Date: 2020/11/24
+    */
     @GetMapping("/findById")
     public Result findById(int id){
        CheckItem checkItem = checkItemService.findById(id);
        return new Result(true,"查询检查项成功",checkItem);
     }
-    //更新检查项
-
-
-
-
-
-
-
     /**
     *
-    * @Description:
+    * @Description:  //更新检查项
     * @Param: [checkItem]
     * @return: com.itheima.entity.Result
     * @Author: 陆奉学

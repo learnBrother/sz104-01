@@ -1,5 +1,7 @@
 package com.itheima.service;
 
+import com.itheima.entity.PageResult;
+import com.itheima.entity.QueryPageBean;
 import com.itheima.pojo.CheckGroup;
 
 /**
@@ -20,4 +22,14 @@ public interface CheckGroupService {
     * @Date: 2020/11/24
     */
     void add(CheckGroup checkGroup, Integer[] checkitemIds);
+    /**
+    *
+    * @Description: 分页查询检查组
+    * @Param: [queryPageBean]
+    * @return: com.itheima.entity.PageResult<com.itheima.pojo.CheckGroup>
+    * @Author: 陆奉学
+    * @Date: 2020/11/25
+    */
+    PageResult<CheckGroup> findPage(QueryPageBean queryPageBean);
+
 }
