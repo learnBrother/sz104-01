@@ -27,4 +27,54 @@
           where code like #{value} or name like #{value} or helpCode like #{value}
         </if>
     </select>
+    
+    <!--编辑检查组-->
+    <select id="findCheckItemIdsByCheckGroupId" parameterType="int" resultType="int">
+        select checkitem_id from t_checkgroup_checkitem where checkgroup_id=#(checkGroupId)
+    </select>
+
+    <select id="fidById" parameterType="int" resultType="checkgroup">
+        select * from t_checkgroup where id=#{checkGroupId}
+    </select>
+
+    <update id="update" parameterType="checkgroup">
+        update t_checkgroup
+        set
+            code=#{code},
+            name=#{name},
+            helpCode=#{helpCode},
+            sex=#{sex},
+            remark=#{remark},
+            attention=#{attention}
+        where id=#{id}
+    </update>
+    <delete id="deleteCheckGroupCheckItem" parameterType="int">
+        delete from t_checkgroup_checkitem where checkgroup_id=#{id}
+    </delete>
+
+    <!--删除检查组-->
+    <select id="findSetmealCountByCheckGroupId" parameterType="int" resultType="int">
+        select count(1) from t_setmeal_checkgroup where checkgroup_id=#{id}
+    </select>
+
+    <delete id="daleteCheckGroupCheckItem" parameterType="int">
+        delete from t_checkgroup_checkitem where checkgroup_id=#{id}
+    </delete>
+    <!---->
+    <!--<delete id="deleteById" parameterType="int">-->
+        <!--delete from t_checkgroup where id=#{id}-->
+    <!--</delete>-->
+
+    <!--新增套餐上传图片回显-->
+    <select id="findAll" resultType="CheckGroup">
+        select * from t_checkgroup
+    </select>
+
+    <!--删除套餐-->
+    <select id="findOrderCountBySetmealId" parameterType="int" resultType="int">
+        select count(1) from t_order where setmeal_id=#{id}
+    </select>
+    <delete id="deleteById" parameterType="int">
+        delete from t_setmeal where id=#{id}
+    </delete>
 </mapper>

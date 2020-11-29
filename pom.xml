@@ -12,6 +12,11 @@
     <module>health_interface</module>
     <module>health_service</module>
     <module>health_web</module>
+      <module>health_jobs</module>
+    <module>health_jobs</module>
+    <module>health_jobs</module>
+      <module>health_jobs</module>
+      <module>health_mobile</module>
   </modules>  
   <packaging>pom</packaging>
   <!-- 集中定义依赖版本号 -->  
@@ -231,7 +236,22 @@
         <groupId>xml-apis</groupId>  
         <artifactId>xml-apis</artifactId>  
         <version>1.4.01</version> 
-      </dependency> 
+      </dependency>
+
+      <!-- 依赖版本管理标签-->
+      <!--阿里云服务器短信平台-->
+      <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-core</artifactId>
+        <version>3.3.1</version>
+      </dependency>
+      <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+        <version>1.0.0</version>
+      </dependency>
+
+
     </dependencies> 
   </dependencyManagement>  
   <dependencies> 
@@ -245,8 +265,14 @@
       <groupId>org.projectlombok</groupId>  
       <artifactId>lombok</artifactId>  
       <version>1.18.12</version> 
-    </dependency> 
-  </dependencies>  
+    </dependency>
+
+
+
+
+  </dependencies>
+
+
   <build> 
     <plugins> 
       <!-- java编译插件 -->  

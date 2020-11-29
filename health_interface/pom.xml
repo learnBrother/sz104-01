@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>health_interface</artifactId>
-    <packaging>java</packaging>
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>com.ithiema</groupId>
